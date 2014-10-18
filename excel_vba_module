@@ -1,0 +1,74 @@
+
+Sub mainEater()
+
+Dim i As Long
+Dim tkmr As Tokumori
+Dim PI As Double
+Dim r1 As Integer
+Dim r2 As Integer
+Dim r0 As Integer
+Dim r3 As Integer
+Dim cenX As Integer
+Dim cenY As Integer
+Dim stp As Long
+Dim th2, th2r, th1, th1r As Double
+Dim x1, y1, x2, y2 As Double
+Dim rn As Double
+Dim r1d1, r1d2 As Double
+Dim lw, dlw As Double
+
+Set tkmr = New Tokumori
+tkmr.openPDF 595, 842, "myPDF"
+PI = 4# * Atn(1#)
+r1 = 37
+r2 = 251
+r0 = 29
+r3 = 47
+cenX = Int(595 / 2)
+cenY = Int(842 / 2)
+stp = 2
+rn = Math.Rnd
+rn = 0.4
+lw = 0.01
+dlw = 0.01
+For i = 1 To 10000 Step stp
+    th2 = i / 180 * PI
+    th2r = (i + stp) / 180 * PI
+    
+    th1 = -th2 * r2 / r1
+    th1r = -th2r * r2 / r1
+'-------------------------------
+    x1 = cenX + Math.Cos(th2) * (r2 - r1) + Math.Sin(th1) * r0
+    x2 = cenX + Math.Cos(th2r) * (r2 - r1) + Math.Sin(th1r) * r0
+    y1 = cenX + Math.Sin(th2) * (r2 - r1) + Math.Cos(th1) * r0
+    y2 = cenX + Math.Sin(th2r) * (r2 - r1) + Math.Cos(th1r) * r0
+    Call tkmr.drawLine(x1, y1, _
+                       x2, y2, _
+                       lw, 0, 0, 0)
+                       
+    lw = lw + dlw
+    If lw > 0.5 Then
+        dlw = -0.01
+    ElseIf lw < 0.02 Then
+        dlw = 0.01
+    End If
+Next
+
+'/--------------------
+'For j = 1 To 100
+'    tkmr.drawRect 100, 100, 20, 60, 0.5, False, 0, 0, 0
+'    tkmr.drawString "Hello", 100, 100, 20, True, True, 0.3, 0.3, 0.3
+'    tkmr.drawRect 200, 100, 20, 20, 0.5, False, 0, 0, 0
+'    tkmr.drawString "World", 200, 100, 20, False, False, 0.3, 0.3, 0.3
+    
+'    If j <> 100 Then
+'      tkmr.newPage
+'    End If
+'Next
+'/--------------------
+
+tkmr.closePDF
+Set tkmr = Nothing
+End Sub
+
+
