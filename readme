@@ -1,0 +1,14 @@
+java
+
+c:\> javac eater.java
+c:\> java eater > out.pdf
+
+
+perl
+
+c:\> eater.pl > out.pdf
+
+
+excel
+
+do "mainEater" from macro
