@@ -275,7 +275,7 @@ public class Tokumori {
 		sb.append("<< " +CRLF) ;
 		sb.append("/CreationDate (D:20020616)" +CRLF) ;
 		sb.append("/Title (- Tokumori -)" +CRLF) ;
-		sb.append("/Author (MATSUO Yuji, Recruit Media Communications)" +CRLF) ;
+		sb.append("/Author (Tokumori Library / easy pdf making engine)" +CRLF) ;
 		sb.append("/ModDate (D:20020616170448+09'00')" +CRLF) ;
 		sb.append(">> " +CRLF) ;
 		sb.append("endobj" +CRLF) ;
